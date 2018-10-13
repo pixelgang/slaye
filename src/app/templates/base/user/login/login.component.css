@@ -1,0 +1,74 @@
+/* === Login Main section === */
+.instasocial_login { background: url('/assets/images/bg.png'); /*background-size: 100%; */width: 100%; background-position: top center; position: absolute; bottom: 0px; top: 0px; left: 0px; right: 0px; display: inline-table; height: 100%; background-repeat: no-repeat; background-size: cover; }
+.instasocial_login_block { margin:5% 0% 0%;}
+.login_section { margin:5% 0% 5%; display: inline-block; width:100%; position: relative; }
+.login_block { background-color: #fff; width:450px;  position: relative; padding:20px 30px 10px; margin:0 auto; text-align: center;border-radius: 20px;max-height:100%;}
+.login_logo {width: 120px;height: 120px;position: absolute;display: table-cell;background-color: #fff;border-radius: 120px;left: 0px;right: 0px; margin: 0 auto;top: -60px;padding: 5%;}
+.login_logo img { position: relative; top: 15%; width:75%; }
+.login_form .form_btn.mat-button { font-family: 'open sans'; width: 45%; background-color: #1284ee; color: #fff; border-radius: 6px; margin-top: 10px; font-size: 16px; height: 40px;}
+.login_form .form-group { margin-bottom:5px;}
+.login_form .form-group label { color:#1e2327; font-family: 'open sans'; float: left; font-size: 16px; margin-bottom:0px;}
+.login_form input { margin-bottom:5px; color:#1e2327; bottom: 5px; position: relative;/*border:1px solid #1284ee;*/ font-family: 'open sans'; /*padding: 10px 15px;*/}
+.login_form .checkbox { text-align: left; color:#1284ee; font-family: 'open sans'; }
+.login_form .checkbox label { cursor: pointer; }
+.mat-checkbox-layout .mat-checkbox-label { padding:0px 5px;}
+.login_form  a.btn-link { color:#1e2327; font-family: 'open sans';}
+
+
+:host /deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background { background-color: #1284ee; }
+:host /deep/ .mat-form-field-appearance-outline .mat-form-field-infix { padding: 0.4em 0 0.4em 0; }
+:host /deep/ .mat-form-field-label-wrapper { top: -1.4em; padding-top: .5em; }
+:host /deep/ .mat-form-field-wrapper { padding-bottom:0px; }
+:host /deep/ .mat-form-field { width:100%; margin-top:10px;}
+:host /deep/ .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick { color:#1284ee; }
+:host /deep/ .mat-focused .mat-form-field-label { color:#1284ee; font-size:10px; }
+/* :host /deep/ .username.mat-focused .mat-form-field-outline-gap { width:210px !important;}
+:host /deep/ .password.mat-focused .mat-form-field-outline-gap { width:150px !important;} */
+:host /deep/ .mat-checkbox-inner-container { width:16px; height:16px; }
+:host /deep/ mat-label { font-size: 18px;}
+
+span.pass-icon {position: absolute; right: 5px; top: 2px; }
+input#login_password {padding-right: 30px; }
+
+
+.error_msg { width:100%; height:50px; padding:10px; display: inline-block; text-align: center;}
+.alert-danger { padding:0px 10px; display: inline-block; margin-bottom:0px; position: relative; top:5px;}
+
+
+div{
+    font-family:'open sans';
+}
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+    font-family:'open sans';
+    font-weight: 600;
+}
+.mat-form-field {
+    font-family:'open sans';
+    line-height: 22px;
+}
+div a{
+	text-decoration:none;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}
+/* ===  Media queries below 767px === */
+@media (max-width: 767px)
+{
+.login_section { margin-top:10%;}    
+.login_form .form-group label { font-size: 18px;}
+.login_form  a.btn-link { font-size:14px;}
+/* .login_block { width:100%; height:auto; padding:60px 20px 20px;} */
+.instasocial_login { background-repeat: repeat; width: 100%; height: 100%; background-attachment: fixed; background-position: center; background-size: cover; }
+/* .login_logo {width: 125px;height: 125px;border-radius: 125px;top: -62px;} */
+.login_block{width: 400px;padding: 20px 10px 10px; }
+:host /deep/ mat-label {font-size: 15px; }
+}
+
+/* ===  Media queries below 480px === */
+@media (max-width: 480px)
+{
+.login_section { margin-top:20%;}  
+.login_form .form-group label, .login_form .form_btn.mat-button { font-size: 16px;}
+.login_form  a.btn-link { font-size:12px;}
+.login_block{width: 280px;}}

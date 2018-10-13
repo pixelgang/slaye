@@ -1,0 +1,67 @@
+<!-- BEGIN LOGIN CONTENT -->
+<section class="instasocial_login">
+	<div class="instasocial_login_block">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="login_section">
+				<div class="login_block">
+					<div class="login_logo"><img src="{{logo_url}}" class="img-fluid"></div>
+					<div class="login_form">
+						<div class="container">
+							<form class="form-horizontal" [formGroup]="rForm" (ngSubmit)="loginSubmit(rForm.value)">
+								<div class="error_msg">
+								<ng-template [ngIf]="ismessage">
+									<div class="alert alert-danger" role="alert">{{errormessage}}</div>
+								</ng-template>
+								</div>
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="form-group">
+											<div class="input-group">
+												<mat-form-field class="username" appearance="outline">
+													<mat-label>Enter your username or email</mat-label>
+													<input matInput formControlName="email">
+												</mat-form-field>
+												<div class="text-danger text-left small" *ngIf="errorMsg">{{geterrorMsg('email') || this.errorMsgArr['email']}}</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="form-group">
+											<div class="input-group">
+												<mat-form-field class="password" appearance="outline">
+													<mat-label>Enter your password</mat-label>
+													<input type="password" matInput formControlName="password" id="login_password">
+													<a href="javascript:void(0);" (click)="changetype();"><span class="pass-icon"><i class="fa fa-eye"></i></span></a>
+												</mat-form-field>
+												<div class="text-danger text-left small" *ngIf="errorMsg">{{geterrorMsg('password') || this.errorMsgArr['password']}}</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="checkbox">
+											<mat-checkbox [value]="1" (change)="rememberme($event)" [checked]="check_rm_me">Remember Me</mat-checkbox>
+										</div>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="form-group">
+											<button type="submit" [disabled]="isbuttondisable" mat-button class="form_btn">SIGN IN</button>
+										</div>
+
+										<div class="form-group">
+											<a class="btn btn-link" routerLink="forgot">Forgot Password?</a>
+										</div>
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END LOGIN CONTENT -->

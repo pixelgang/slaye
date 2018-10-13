@@ -1,0 +1,94 @@
+<!-- CMS ADD PAGE START -->
+<div class="admin-dashboard admin-settingspage admin-custompage">
+	<div class="general-form-layout custompage-form-layout">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<!-- BEGIN TITLE -->
+			<div class="section-block first_sec">
+				<div class="pull-left">
+					<div class="block_title">
+						<h1>Add Pages</h1>
+					</div>
+				</div>
+			</div>
+		<!-- END TITLE -->
+		<!-- BEGIN CONTENT -->
+		<div class="section-block">
+		<form [formGroup]="cmsaddForm" (ngSubmit)="cmsaddFormSubmit(cmsaddForm.value)">
+			<ng-template [ngIf]="ismessage"><div class="alert alert-danger" role="alert">{{errormessage}}</div></ng-template>
+			<ng-template [ngIf]="is_success"><div class="alert alert-success" role="alert">Page has been added successfully</div></ng-template>
+					
+				
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="row">
+
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="form-group">
+							<mat-form-field appearance="outline">
+								<mat-label>Title</mat-label>   
+								<input matInput placeholder="Enter Title" formControlName="cms_title" required>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="form-group">
+							<mat-form-field appearance="outline">
+								<mat-label>Slug</mat-label>   
+								<input matInput placeholder="Enter Slug" formControlName="cms_slug" required>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="form-group">
+							<mat-form-field appearance="outline">
+								<mat-label>Description</mat-label>   
+								<textarea matInput placeholder="Enter Description" formControlName="cms_desc"></textarea>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="form-group">
+							<mat-form-field appearance="outline">
+								<mat-label>Meta Description</mat-label>   
+								<input matInput placeholder="Enter Meta Description" formControlName="cms_meta_desc" required>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="form-group">
+							<mat-form-field appearance="outline">
+								<mat-label>Meta Keyword</mat-label>   
+								<input matInput placeholder="Enter Meta Keyword" formControlName="cms_meta_key" required>
+							</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="form-group">
+							<mat-radio-group formControlName="cms_status">
+								Status : 
+								<mat-radio-button value="enable" checked="checked">Active</mat-radio-button>
+								<mat-radio-button value="disable">In-active</mat-radio-button>
+							</mat-radio-group>
+						</div>
+					</div>
+
+
+				</div>
+			</div>	
+
+			<div class="submit-btn">
+				<button mat-button type="submit" [disabled]="isbuttondisable" class="save">Save</button>
+				<button mat-button [routerLink]="['/admin/pages']" class="cancel">Cancel</button>
+			</div>
+		</form>
+	</div>
+	<!-- END CONTENT -->
+
+		</div>
+	</div>
+</div>
+<!-- CMS ADD PAGE END -->

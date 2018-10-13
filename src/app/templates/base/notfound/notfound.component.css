@@ -1,0 +1,79 @@
+/* ===  404 ERROR PAGE START === */
+.error_page p {
+    width: 100%;
+    display:block;
+    text-align: center;
+}
+.error_page p img{
+    max-width: 100%;
+    height:400px;
+}
+.goto_dashboard{
+	width:100%;
+	display:block;
+	margin-top:30px;
+	text-align:center;
+}
+.goto_dashboard .mat-button {
+    width: auto;
+    background: #1284EE;
+    border-radius: 25px !important;
+    padding: 8px 25px;
+    font-size: 20px;
+}
+.error_page{
+    width: 100%;
+    display: table;
+    margin-top: 0;
+    height: 100vh;
+    vertical-align:middle;
+}
+.error_page_inner{
+	vertical-align:middle;
+	width:100%;
+	display:table-cell;
+}
+.goto_dashboard .mat-button i{
+	margin-right:10px;
+}
+.goto_dashboard h1{
+    font-family: 'open sans';
+    font-size: 23px;
+    color: #1E2327;
+    margin: 0px 0px 25px 0px;
+}
+div{
+    font-family:'open sans';
+}
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}
+/* ===  Media queries below 1400PX === */
+@media(max-width:1400px){
+.error_page p img{
+    height:330px;
+}
+}
+/* ===  Media queries below 992px === */
+@media(max-width:992px){
+.error_page p img{
+    height:300px;
+}
+}
+/* ===  Media queries below 767px === */
+@media(max-width:767px){
+.error_page p img{
+    max-width: 86%;
+    height: 180px;
+}
+.goto_dashboard .mat-button {
+    font-size: 18px;
+}
+.goto_dashboard h1 {
+    font-size: 18px;
+}
+}

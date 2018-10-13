@@ -1,0 +1,76 @@
+<!-- MAIL TEMPLATE PAGE START -->
+<section>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="account-setting-block">  
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+
+              <div class="hpanel">
+                  <div class="pull-left">
+                    <h3>Mail Template</h3>
+                  </div>
+                </div>
+              <form [formGroup]="generalForm" (ngSubmit)="generalFormSubmit(generalForm.value)">
+                <ng-template [ngIf]="ismessage"><div class="alert alert-danger" role="alert">{{errormessage}}</div></ng-template>
+                <ng-template [ngIf]="is_success"><div class="alert alert-success" role="alert">Mail Template Updated</div></ng-template>
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline">
+                          <mat-label>Register Mail Template</mat-label>   
+                          <textarea matInput formControlName="register_template" placeholder="Enter template content"></textarea>
+                        </mat-form-field>
+                    </div>
+                  </div>
+        
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Forgot Password Template</mat-label>   
+                        <textarea matInput formControlName="forgot_template" placeholder="Enter template content"></textarea>
+                      </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Post is ready Template</mat-label>   
+                      <textarea matInput formControlName="post_ready" placeholder="Enter template content"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Common Post Template</mat-label>   
+                      <textarea matInput formControlName="common_post" placeholder="Enter template content"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Report Abuse Post Template</mat-label>   
+                      <textarea matInput formControlName="report_abuse" placeholder="Enter template content"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="submit_btn">
+                  <button mat-button class="">SUBMIT</button>
+                </div>
+        
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- MAIL TEMPLATE PAGE END -->

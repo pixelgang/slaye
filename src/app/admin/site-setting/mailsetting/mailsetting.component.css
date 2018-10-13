@@ -1,0 +1,62 @@
+/* ===  Mail settings Main Section === */
+.account-setting { padding:20px; color:#1e2327; font-family: 'open sans';}
+.account-setting-block { width:100%; display: inline-block; }
+.hpanel { width:100%; display: inline-block; }
+.account-setting-block h3 { color: #1e2327; }
+.form-group label {color:#1e2327; width:100%;}
+.form-group label.btn.btn-primary { width:auto;color:#fff; background-color: #1e2327; border-color:#1e2327; }
+.avatar-image { height: 100px; width: 100%; position: relative; margin: 10px 0px; }
+.avatar-image img { height: 100%; width: 100%; position: relative; border: 4px solid #ccc; object-fit: contain; padding: 5px; }
+.submit_btn { width:100%; text-align: center; position: relative; display: inline-block; margin:10px;}
+.submit_btn button.mat-button { color:#fff; background-color: #1284ee; }
+
+
+:host /deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background { background-color: #1284ee; }
+:host /deep/ .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background { background-color: #1284ee; }
+:host /deep/ .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle { background-color: #1284ee; }
+:host /deep/ .mat-radio-button.mat-accent .mat-radio-inner-circle { background-color: #fff; }
+:host /deep/ .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle { border-color:#1284ee; }
+:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-underline { background-color: transparent; }
+:host /deep/ .mat-form-field.mat-focused .mat-form-field-ripple { background-color: transparent; }
+:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-infix { padding: .4375em 0; border: 1px solid #ced4da; padding: 14px; border-radius: 4px;}
+:host /deep/ .mat-form-field-type-mat-select .mat-form-field-label { padding:14px 10px;}
+:host /deep/ .mat-form-field { width:100%; }
+:host /deep/ .mat-radio-button { margin:0px 5px; }
+
+
+:host /deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background { background-color: #1284ee; }
+:host /deep/ .mat-form-field-appearance-outline .mat-form-field-infix { padding: 0.5em 0 0.5em 0; }
+:host /deep/ .mat-form-field-label-wrapper { top: -1.4em; padding-top: .5em; }
+:host /deep/ .mat-form-field-wrapper { padding-bottom:0px; }
+:host /deep/ .mat-form-field { width:100%; margin-top:10px;}
+:host /deep/ .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick { color:#1284ee; }
+:host /deep/ .mat-focused .mat-form-field-label { color:#1284ee; font-size:16px; }
+:host /deep/ .mat-checkbox-inner-container { width:16px; height:16px; }
+:host /deep/ input.mat-input-element { color:#34474f; margin-bottom: 5px; }
+
+
+:host /deep/ .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
+:host /deep/ .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label { display: none; }
+
+
+
+
+.change-password { padding:0px 5px; color: #1e2327; font-family: 'open sans';}
+.change-password h3 { color: #1e2327; }
+.submit_btn { width:100%; text-align: center; position: relative; display: inline-block; }
+.submit_btn button.mat-button { color:#fff; background-color: #1284ee; }
+.hpanel { width:100%; display: inline-block; position: relative;}
+.form-group label {color:#1e2327;}
+.change-password-from { width:100%; display: inline-block; position: relative; padding:0px 5px;}
+
+
+div{font-family:'open sans'; }
+:host /deep/ textarea.mat-input-element{min-height:100px;max-height:100px;resize:none;}
+:host /deep/ .mat-form-field {font-family:'open sans'; line-height: 23px; }
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}

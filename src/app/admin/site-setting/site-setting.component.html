@@ -1,0 +1,106 @@
+<!-- SITE SETTINGS PAGE START -->
+<section class="account-setting">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="account-setting-block">  
+  
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+  
+                <div class="hpanel">
+                    <div class="pull-left">
+                      <h3>Site Settings</h3>
+                    </div>
+                  </div>
+                <form [formGroup]="generalForm" (ngSubmit)="generalFormSubmit(generalForm.value)">
+                  <ng-template [ngIf]="ismessage"><div class="alert alert-danger" role="alert" [innerHTML]="errormessage"></div></ng-template>
+                  <ng-template [ngIf]="is_success"><div class="alert alert-success" role="alert">General setting saved</div></ng-template>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Application Name</mat-label>   
+                            <input matInput formControlName="app_name" placeholder="Enter Application Name">
+                          </mat-form-field>
+                      </div>
+                    </div>
+          
+                  <div class="col-lg-6 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Email</mat-label>   
+                          <input matInput formControlName="email" placeholder="Enter Email">
+                        </mat-form-field>
+                      </div>
+                  </div>
+
+                   <div class="col-lg-6 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <label>Frontend Logo</label>
+                        <div class="avatar-image">
+                            <img [src]="sanitizer.bypassSecurityTrustUrl(logo_url)" class="logo_url" />
+                          </div>
+                          <p class="note_text"><b>Note :</b> Images must be in 16*16 jpg, jpeg, png, ico format</p>
+                          <label class="btn btn-primary"> Select File
+                            <input type="file" #favi accept=".jpg, .jpeg, .png" style="display: none" ng2FileSelect [uploader]="uploader" (onFileSelected)="fileSelected($event)" />
+                          </label>
+                      </div>
+                  </div>
+          
+                  <div class="col-lg-6 col-md-12 col-sm-12">
+                      <div class="form-group fav_icons_blk">
+                        <label>Fav Icons</label>
+                        <div class="avatar-image">
+                            <img [src]="sanitizer.bypassSecurityTrustUrl(favi_url)" class="logo_url" />
+                          </div>
+                          <p class="note_text"><b>Note :</b> Images must be in 16*16 jpg, jpeg, png, ico format</p>
+                          <label class="btn btn-primary"> Select File
+                            <input type="file" #logo accept=".jpg, .jpeg, .png .ico" style="display: none" ng2FileSelect [uploader]="faviuploader" (onFileSelected)="fileSelected($event)" />
+                          </label>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>One Signal ID</label>
+                      <mat-form-field appearance="outline">
+                          <mat-label>One Signal ID</mat-label>   
+                          <input matInput formControlName="onesignal_appid" placeholder="Enter one signal id">
+                        </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>One Signal Key</label>
+                      <mat-form-field appearance="outline">
+                          <mat-label>One Signal Key</mat-label>   
+                          <input matInput formControlName="onesignal_appkey" placeholder="Enter one signal key">
+                        </mat-form-field>
+                    </div>
+                  </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>Notification Flush</label>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Notification Flush</mat-label>   
+                          <input matInput formControlName="notification_flush" (keypress)="numberOnly($event)" placeholder="Enter notification flush">
+                              <span matPrefix class="notif_icon"><i class="material-icons">notification_important</i></span>
+                        </mat-form-field>
+                    </div>
+                  </div>
+          
+                  <div class="submit_btn">
+                    <button mat-button class="">SUBMIT</button>
+                  </div>
+          
+                </div>
+              </form>
+            </div>
+
+          </div>
+  
+      </div>
+    </div>
+  </section>
+  <!-- SITE SETTINGS PAGE END -->

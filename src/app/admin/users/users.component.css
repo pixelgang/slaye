@@ -1,0 +1,98 @@
+/* ===  User Listings  Main Section === */
+.mat-elevation-z8 { box-shadow:none; }
+table.mat-table { width:100%; position: relative; min-width: 675px;}
+.blue-btn.mat-button { font-family: 'open sans'; font-size: 14px; border-radius: 50px; background-color: #1284ee; color:#e9f1fd; }
+td.mat-cell { color:#34474f; font-size: 13px; font-family: 'open sans'; }
+td.mat-cell .tableprofile_name { color: #1284ee; font-size: 19px; font-family: 'open sans'; }
+td.mat-cell img { width:48px; height:48px; border-radius:48px; display:inline-block; object-fit:cover; }
+tr.mat-row { height:80px;}
+td.mat-cell:last-child { text-align: center; padding-right:0px; }
+thead tr.mat-header-row{ display: none;}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell { text-align:center; }
+
+.filter_layout_input,.no-results {color: #34474f; }
+.filter_layout_input {display: inline-block; width: 40%; }
+.filter_button_layout {display: inline-block; width: 50%;text-align:left;}
+:host /deep/ .filter_layout_input .mat-form-field-infix {width: 100%; }
+:host /deep/ .filter_layout_input .mat-form-field{width: 100%;padding-right:10px; }
+.users-table .active {background-color: #00C853;text-transform:capitalize;color:#fff;padding:5px 15px;}
+.users-table .inactive{background-color:#FF1744;text-transform:capitalize;color:#fff;padding:5px 15px;}
+.filter_button_layout button {margin: 0px 10px; }
+.no-results {text-align: center; padding-top: 20px;color: #1284EE; }
+.span_badge{width:35px;height:35px;background-color:#1284EE;color:#fff;border-radius:50%;display: inline-block;vertical-align: middle;line-height: 35px;text-overflow: ellipsis; text-align: center;white-space: nowrap; overflow: hidden;}
+td.mat-cell:first-child, td.mat-footer-cell:first-child, th.mat-header-cell:first-child {padding-left: 20px; }
+td.mat-cell:first-child, td.mat-footer-cell:first-child, th.mat-header-cell:first-child {width: 75px !important; text-align: left; }
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{text-align: left; }
+td.mat-cell:last-child {text-align: center; padding-right: 0px; }
+td.mat-cell{font-size: 14px;font-family:'open sans'; }
+.users-table .mat-header-cell {font-size: 15px; color:#1E2327; }
+td.mat-column-post_count,td.mat-column-follower_count,td.mat-column-following_count,td.mat-column-status,td.mat-column-action,th.mat-column-post_count,th.mat-column-follower_count,th.mat-column-following_count,th.mat-column-status{
+    text-align: center;
+}
+th.mat-header-cell:last-child {padding-right: 0px; text-align: center }
+td.mat-cell:nth-child(2), td.mat-footer-cell:nth-child(2), th.mat-header-cell:nth-child(2){width: 80px; }
+td.mat-cell:nth-child(3), td.mat-footer-cell:nth-child(3), th.mat-header-cell:nth-child(3),td.mat-cell:nth-child(4), td.mat-footer-cell:nth-child(4), th.mat-header-cell:nth-child(4) {width: 100px; }
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{padding:5px; }
+/*.mat-column-first_name,.mat-column-last_name,.mat-column-username{text-transform: capitalize;}*/
+.users-table .mat-header-cell{vertical-align: middle; }
+.table_loader{
+	width:100%;
+	display:block;
+	text-align:center;
+	margin: 20px 0px 20px 0px;
+}
+.table_loader circle {
+    display:inline-block;
+}
+.table_loader .mat-spinner.mat-progress-spinner.mat-primary.mat-progress-spinner-indeterminate-animation {
+    display: inline-block;
+}
+div{
+    font-family:'open sans';
+}
+.mat-header-cell {
+    font-weight: 600;
+}
+.mat-table {
+    font-family:'open sans';
+}
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+    font-family:'open sans';
+    font-weight: 600;
+}
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+    font-family:'open sans';
+}
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}
+/* ===  Media queries below 1400px === */
+@media(max-width:1400px){
+td.mat-cell:nth-child(2), td.mat-footer-cell:nth-child(2), th.mat-header-cell:nth-child(2){
+    width: 60px;
+}
+td.mat-cell{font-size: 13px;}
+.users-table .mat-header-cell {font-size: 13px;}
+}
+/* ===  Media queries below 991 === */
+@media(max-width:991px){
+.filter_layout_input {width: 50%; }
+.filter_button_layout {width: 50%; }
+}
+/* ===  Media queries below 767px === */
+@media (max-width:767px) {
+/*.section-block.first_sec {margin-top: 50px;}*/
+.filter_layout_input {width: 100%; }
+.filter_button_layout {width: 100%;padding:10px 3px; }
+.filter_button_layout button {margin: 0px 10px 5px 0px; }
+}
+/* ===  Media queries below 480px === */
+@media (max-width:480px) {
+/*.section-block.first_sec {margin-top: 50px;}*/
+.filter_button_layout {padding:10px 3px; }
+.filter_button_layout button {margin: 0px 10px 5px 0px; }
+}

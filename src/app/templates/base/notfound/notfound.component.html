@@ -1,0 +1,19 @@
+<!-- 404 ERROR PAGE START -->
+<div class="error_page">
+<div class="error_page_inner">
+<p>
+ <img src="/assets/images/404.png">
+</p>
+ <div class="goto_dashboard">
+ <h1>Ooops! Something went wrong .Go back to the Dashboard.</h1>
+<span *ngIf="page_access">
+<button mat-button routerLink="/admin/dashboard"><i class="material-icons">arrow_back</i>Go To Dashboard</button>
+</span>
+<span *ngIf="page_access==false">
+<button mat-button routerLink=""><i class="material-icons">arrow_back</i>Go To Login</button>
+</span>
+
+</div>
+</div>
+</div>
+<!-- 404 ERROR PAGE END -->

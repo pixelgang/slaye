@@ -1,0 +1,110 @@
+<!-- PROFILE SETTINGS PAGE START -->
+<section class="account-setting">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="account-setting-block">  
+      <form [formGroup]="editForm" (ngSubmit)="editprofileSubmit(editForm.value)">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12">
+
+          <div class="hpanel">
+            <div class="pull-left">
+              <h3 matTooltip="Home" matTooltipPosition="right">Profile Settings</h3>
+            </div>
+          </div>
+
+            <ng-template [ngIf]="ismessage"><div class="alert alert-danger" role="alert" [innerHTML]="errormessage"></div></ng-template>
+            <ng-template [ngIf]="issuccess"><div class="alert alert-success" role="alert">{{successmessage}}</div></ng-template>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>   
+                    <input matInput placeholder="Enter First Name" formControlName="firstname" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>   
+                    <input matInput placeholder="Enter Email" formControlName="email" required>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>   
+                    <input matInput placeholder="Enter Last Name" formControlName="lastname" required>
+                  </mat-form-field>
+                </div>
+              </div>                  
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>   
+                    <input matInput placeholder="Enter Username" formControlName="username" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-select class="select_field" formControlName="country" placeholder="Select Country">
+                      <mat-option *ngFor="let counte of countries" [value]="counte.code">{{ counte.name }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>   
+                    <input matInput placeholder="Enter State Name" formControlName="state">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="submit_btn">
+                <button mat-button type="submit" class="">UPDATE</button>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 settings_last_block">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <mat-radio-group formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>  
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <div class="avatar-image">
+                <img [src]="sanitizer.bypassSecurityTrustUrl(profilepic)" class="profilepic" />
+              </div>
+              <label class="btn btn-primary"> Select File
+                <input type="file" class="custom-file-input" ng2FileSelect [uploader]="uploader"  #uploadEl style="display: none" />
+              </label>
+              <span *ngIf="file_upload_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </form>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 col-sm-12 change_password_block">
+        <app-changepassword></app-changepassword>  
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROFILE SETTINGS PAGE END -->

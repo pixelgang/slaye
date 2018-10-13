@@ -1,0 +1,31 @@
+/* === Footer Main section === */
+.footer-inner-block {
+    width: 100%;
+    height: 40px;
+    background-color: #1e2327;
+    z-index: 999;
+    text-align:center;
+    display:block;
+}
+.footer-inner-block p {
+    margin: 8px 0px 0px;
+    font-size:14px;
+    width:100%;
+    float:left;
+}
+.footer-inner-block{
+    font-family: 'open sans';
+}
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+.footer-block{
+	padding-top: 60px;
+	display: block;
+	width: 100%;
+}
+@media(max-width:767px){
+    .footer-block{padding-top: 100px; }
+    .footer-inner-block p {font-size:13px; }
+}

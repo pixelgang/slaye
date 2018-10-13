@@ -1,0 +1,128 @@
+<!-- POST DETAILS PAGE START -->
+<section class="user-management">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="row">
+      <div class="back_button_blk"><a routerLink="/admin/posts" [queryParams]="{page: page_number}" matTooltip="Back" matTooltipPosition="below"><i class="material-icons">arrow_back</i></a></div>
+      <div class="col-lg-9 col-md-12 col-sm-12">
+      <!-- BEGIN TITLE -->
+        <div class="hpanel">
+
+          <div class="pull-left">
+            <ul class="user-details">
+              <li>
+                <span class="profile_picture"><a routerLink="/admin/profile/{{user_id}}"><img src="{{user_image}}"></a></span>
+              </li>
+              <li>
+                <h4><a routerLink="/admin/profile/{{user_id}}">{{first_name}} {{last_name}}</a></h4>
+                <p class="city">{{post_location}}</p>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="pull-right">
+            <div class="post_enable">
+             <p> Post Enable</p><mat-slide-toggle [checked]="status_checked" (change)="updatePoststatus($event)"></mat-slide-toggle>
+           </div>
+         </div>
+       </div>
+       <!-- END TITLE -->
+       <!-- POST DETAILS BLOCK START -->
+       <div class="post_block">
+        <div class="post_inner_block">          
+          <span *ngIf="media_data.length>0">
+            <span *ngIf="media_data['0'].media_type==='photo'" class="post_images">
+              <img src="{{media_data['0'].media_name}}" class="img-fluid">
+            </span>
+            <span *ngIf="media_data['0'].media_type==='video'">
+              <video controlsList="nodownload" controls poster="{{media_data['0'].media_image}}">
+                <source src="{{media_data['0'].media_name}}" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              </span>
+            </span>
+            <div class="timing">
+            <p>{{created_at_ago}}</p>
+          </div>
+            <h4 innerHTML="{{post_text}}"></h4>
+
+            <div class="hpanel">
+              <div class="pull-left">
+                <div class="command_select">
+                  <mat-form-field>
+                    <mat-select [(value)]="search_selected" (selectionChange)="onChangeType($event.value)">
+                      <mat-option *ngFor="let options of search_options" [value]="options.value">
+                        {{options.type}}
+                      </mat-option>
+                    </mat-select>
+                    
+                  </mat-form-field><span class="comments_blk">{{comment_count}} Comments</span>
+                </div>
+              </div>
+
+              <div class="pull-right">
+                <mat-form-field class="example-full-width">
+                  <input type="text" [(ngModel)]="search_text" [ngModelOptions]="{standalone: true}" matInput placeholder="Username or email or message Search ..." (keydown.enter)="loadSearchcmt($event)">
+                  <mat-icon matSuffix (click)="loadSearchcmtaction();">search</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+<div class="table-responsive">
+          <span *ngIf="cmt_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+              <ng-container *ngFor="let cmtdata of cmtsInfo">
+                <ul class="user_lists {{cmtdata.cmt_status}}" id="cmt_block_{{cmtdata.cmt_id}}">
+                  <li><a routerLink="/admin/profile/{{cmtdata.user_id}}"><span class="profile_picture"><img src="{{user_img_path}}{{cmtdata.user_id}}"></span></a></li>
+                  <li>
+                    <div class="profile_name"><a routerLink="/admin/profile/{{cmtdata.user_id}}">{{cmtdata.user_name}}</a></div>
+                    <div class="profile_timing">{{cmtdata.created_at}}</div>
+                  </li>
+                  <li><span class="profile_command"><div innerHTML="{{cmtdata.cmt_text}}"></div> </span></li>
+                  <li class="more_option_blk">
+                    <button mat-button [matMenuTriggerFor]="menu"><i class="material-icons">more_vert</i></button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="updateCmtsstatus(cmtdata.cmt_id,'active', 'inactive')"><i class="material-icons option_blk_icon">done</i><span class="option_blk">Enable</span></button>
+                      <button mat-menu-item (click)="updateCmtsstatus(cmtdata.cmt_id,'inactive','active')"><i class="material-icons option_blk_icon">close</i><span class="option_blk">Disable</span></button>
+                    </mat-menu>
+                  </li>
+                </ul>
+              </ng-container>
+
+              <span *ngIf="loadMorebtn" class="view_btn_div"><button mat-button class="view-more" (click)="loadMorecmts();">View More</button></span>
+
+              <div *ngIf="norecords && cmtsInfo.length==0" class="no-results">No records found</div>
+            </div>
+          
+
+        </div>
+        <!-- POST DETAILS BLOCK END -->
+            
+
+
+      </div>
+      <!-- POST USERS LIST BLOCK START -->
+      <div class="col-lg-3 col-md-12 col-sm-12">
+        <div class="profile_users_list">
+          <mat-form-field>
+            <mat-select placeholder="{{like_count}} Likes"></mat-select>
+          </mat-form-field>
+
+          <div class="post_block">
+            <div class="user_side_list">
+              <ng-container *ngFor="let lksdata of lksInfo">
+                <ul class="side_list">
+                  <li><a routerLink="/admin/profile/{{lksdata.user_id}}"><span class="profile_side_img"><img src="{{user_img_path}}{{lksdata.user_id}}"></span></a></li>
+                  <li><a routerLink="/admin/profile/{{lksdata.user_id}}"><h4>{{lksdata.user_name}}</h4></a><p>{{lksdata.user_state}}, {{lksdata.user_country}}</p></li>
+                </ul>
+              </ng-container>
+              <span *ngIf="loadMorelkbtn"><button mat-button class="view-more" (click)="loadMorelks();">View More</button></span>            
+
+              <div *ngIf="lksnorecords && lksInfo.length==0" class="no-results">No records found</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- POST USERS LIST BLOCK END -->
+    </div>
+  </div>
+</section>
+<!-- POST DETAILS PAGE END -->

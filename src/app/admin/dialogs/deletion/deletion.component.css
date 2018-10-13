@@ -1,0 +1,23 @@
+/* === Delete popup Main section === */
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+.delete-popup{    margin-top: 19px;
+    padding-bottom: 30px;}
+.delete-popup h3{text-align: center;}
+.delete-popup button{    background-color: #292f43;color: #fff;border: none;}
+div{
+    font-family:'open sans';
+}
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}

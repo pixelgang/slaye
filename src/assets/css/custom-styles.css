@@ -1,0 +1,36 @@
+body { font-size: 0%;}
+button.mat-button:focus, button:focus { outline:none; }
+.fixed-navbar { color:#eff2f7; }
+body.fixed-navbar .right-sidecontent{ margin-left:250px; top: 60px; position: relative; }
+.right-sidecontent { padding: 0px 0px; transition: margin .4s ease 0s;/*  min-height: 100%;*/min-height: calc(100vh - 100px); }
+.wrapper { transition: all 0.5s; margin-left:0px; padding:0px 0px; height:60px; background-color: #1e2327; }
+body.hide-sidebar .wrapper { margin-left:0px; }
+body.hide-sidebar .right-sidecontent { margin-left:80px;}
+.hide-sidebar nav#sidebar { transition: width 0.3s; /*margin-left: -250px;*/ min-width: 80px; width: 80px; text-align: center; }
+.hide-sidebar nav#sidebar button.mat-button { padding: 8px 5px; min-width:100%; text-align: center;}
+
+.fixed-navbar #sidebar ul.components li .icon { font-size:16px; display: inline-block; }
+.fixed-navbar.hide-sidebar #sidebar ul.components li .icon { font-size:30px;}
+.fixed-navbar.hide-sidebar .menu_text { display: none; }
+.footer-inner-block {padding-left:250px;transition: padding .4s ease 0s; }
+.hide-sidebar .footer-inner-block {padding-left:80px !important; }
+
+@media (max-width: 767px)
+{
+body.fixed-navbar .right-sidecontent{ margin-left:0px; transition: all 0.3s; top: 100px;}
+.hide-sidebar nav#sidebar { transition: width 0.3s; /*margin-left: -250px;*/ min-width: 80px; width: 80px; text-align: center; }
+body.hide-sidebar .wrapper { margin-left:0px; }
+body.hide-sidebar .right-sidecontent { margin-left:0px;}
+body.show-sidebar nav#sidebar { margin-left:0px; }
+
+
+body.show-sidebar .wrapper { margin-left: 80px; transition: margin .4s ease 0s;}
+body.fixed-navbar.show-sidebar .wrapper { margin-left: 0px; transition: margin .4s ease 0s; }
+body .wrapper { margin-left: 0px; }
+
+body.fixed-navbar.show-sidebar .right-sidecontent{ margin-left:80px; }
+.fixed-navbar #sidebar ul.components li .icon { font-size:30px;}
+.fixed-navbar #sidebar .menu_text { display: none; }
+.footer-inner-block {padding-left:0px;}
+.show-sidebar .footer-inner-block {padding-left:80px !important; }
+}

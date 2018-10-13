@@ -1,0 +1,77 @@
+<!-- MAIL SETTINGS PAGE START -->
+<section class="account-setting">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="account-setting-block">  
+
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+
+              <div class="hpanel">
+                  <div class="pull-left">
+                    <h3>Mail Settings</h3>
+                  </div>
+                </div>
+              <form [formGroup]="generalForm" (ngSubmit)="generalFormSubmit(generalForm.value)">
+                <ng-template [ngIf]="ismessage"><div class="alert alert-danger" role="alert">{{errormessage}}</div></ng-template>
+                <ng-template [ngIf]="is_success"><div class="alert alert-success" role="alert">Mail setting saved</div></ng-template>
+              <div class="row">
+                  <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline">
+                          <mat-label>SMTP Host</mat-label>   
+                          <input matInput formControlName="smtp_host" placeholder="Enter SMTP Host">
+                        </mat-form-field>
+                    </div>
+                  </div>
+        
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline">
+                        <mat-label>SMTP Port</mat-label>   
+                        <input matInput formControlName="smtp_port" (keypress)="numberOnly($event)" placeholder="Enter SMTP Port">
+                      </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>SMTP Secure</mat-label>   
+                        <input matInput formControlName="smtp_secure" placeholder="Enter SMTP Secure">
+                      </mat-form-field>
+                  </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>SMTP Username</mat-label>   
+                        <input matInput formControlName="smtp_username" placeholder="Enter SMTP Username">
+                      </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>SMTP Password</mat-label>   
+                        <input matInput formControlName="smtp_password" placeholder="Enter SMTP Password">
+                      </mat-form-field>
+                  </div>
+                </div>
+                <div class="submit_btn">
+                  <button mat-button class="">SUBMIT</button>
+                </div>        
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <app-mailtemplate></app-mailtemplate> 
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- MAIL SETTINGS PAGE END -->

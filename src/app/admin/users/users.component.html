@@ -1,0 +1,116 @@
+<!-- USER LISTINGS PAGE START -->
+<section>
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="section-block first_sec">
+					<div class="block_title">
+						<h1>User Listings</h1>
+					</div>
+				</div>
+				<div class="section-block">
+					<div class="table-responsive">
+						<div class="filter_layout">
+					        <div class="filter_layout_input">
+					          <mat-form-field>
+					              <input matInput class="class_filter_input" #filter (keydown.enter)="applyFilter(customFilter,1)" [(ngModel)]="customFilter" placeholder="Filter By Name or E-mail">       
+					          </mat-form-field>
+					        </div>
+					        <div class="filter_button_layout">
+					          <button #filterbutton mat-raised-button (click)="applyFilter(customFilter,1)">Search</button>
+					          <button #filterbutton mat-raised-button (click)="applyFilter(customFilter,0)">Reset</button>   
+					        </div>
+					      </div>
+
+						<div class="mat-elevation-z8">
+							<table mat-table [dataSource]="data" class="users-table"
+							matSort matSortDisableClear>
+
+							<ng-container matColumnDef="index">
+								<th mat-header-cell *matHeaderCellDef>S.No</th>
+								<td mat-cell *matCellDef="let row; let i = index;">
+									<span *ngIf="pageEvent">{{pageEvent.pageIndex*perpage+ConvertToInt(i)+1}} </span> 
+									<span *ngIf="!pageEvent && pg_number!='0'">{{ pg_number*perpage+ConvertToInt(i)+1 }}</span>
+									<span *ngIf="!pageEvent && pg_number==0">{{ ConvertToInt(i)+1 }}</span>
+								</td>
+							</ng-container>
+
+							<ng-container matColumnDef="user_id">
+								<th mat-header-cell *matHeaderCellDef>Profile</th>
+								<td mat-cell *matCellDef="let row"><img src="{{user_img_path}}{{row.user_id}}"></td>
+							</ng-container>
+
+							<ng-container matColumnDef="first_name">
+								<th mat-header-cell *matHeaderCellDef>First Name</th>
+								<td mat-cell *matCellDef="let row">{{ row.first_name }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="last_name">
+								<th mat-header-cell *matHeaderCellDef>Last Name</th>
+								<td mat-cell *matCellDef="let row">{{ row.last_name }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="username">
+								<th mat-header-cell *matHeaderCellDef>Username</th>
+								<td mat-cell *matCellDef="let row">{{ row.username }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="email">
+								<th mat-header-cell *matHeaderCellDef>E-mail</th>
+								<td mat-cell *matCellDef="let row">{{ row.email }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="post_count">
+								<th mat-header-cell *matHeaderCellDef>Posts Count</th>
+								<td mat-cell *matCellDef="let row"><span class="span_badge">{{ row.post_count }}</span></td>
+							</ng-container>
+
+							<ng-container matColumnDef="follower_count">
+								<th mat-header-cell *matHeaderCellDef>Followers Count</th>
+								<td mat-cell *matCellDef="let row"><span class="span_badge">{{ row.follower_count }}</span></td>
+							</ng-container>
+
+							<ng-container matColumnDef="following_count">
+								<th mat-header-cell *matHeaderCellDef>Followings Count</th>
+								<td mat-cell *matCellDef="let row"><span class="span_badge">{{ row.following_count }}</span></td>
+							</ng-container>
+
+							<ng-container matColumnDef="status">
+								<th mat-header-cell *matHeaderCellDef>Status</th>
+								<td mat-cell *matCellDef="let row"><span *ngIf="row.status=='active'" class="active">
+										{{ row.status }}
+									</span>
+									<span *ngIf="row.status=='inactive'" class="inactive">
+										{{ row.status }}
+									</span></td>
+							</ng-container>
+
+
+							<ng-container matColumnDef="action">
+								<th mat-header-cell *matHeaderCellDef><i class="fa fa-plus mat-icon"></i> Action</th>
+								<td mat-cell *matCellDef="let row">
+									<span *ngIf="pageEvent">
+										<button mat-icon-button routerLink="/admin/profile/{{row.user_id}}" [queryParams]="{page: pageEvent.pageIndex}"  matTooltip="View" matTooltipPosition="below"><i class="material-icons">visibility</i></button>
+									</span>
+                        			<span *ngIf="!pageEvent">
+                        				<button mat-icon-button routerLink="/admin/profile/{{row.user_id}}" [queryParams]="{page: pg_number}" matTooltip="View" matTooltipPosition="below"><i class="material-icons">visibility</i></button>
+                        			</span>
+								</td>
+							</ng-container>
+
+							<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+						</table>
+						<span *ngIf="user_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+						<div class="no-results" [style.display]="resultsLength == 0 ? '' : 'none'">
+					        No Record Found.
+					    </div>
+					  <mat-paginator [length]="resultsLength" [pageSize]="perpage" (page)="pageEvent = $event"></mat-paginator>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- USER LISTINGS PAGE END -->

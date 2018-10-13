@@ -1,0 +1,128 @@
+<!-- PROFILE INFO PAGE START -->
+<div class="bg_fulls">	
+	<div class="col-lg-12 col-md-12 col-sm-12">
+
+		<div class="section-block clearfix">
+			<div class="back_button_blk"><a routerLink="/admin/users"  [queryParams]="{page: page_number}" matTooltip="Back" matTooltipPosition="below"><i class="material-icons">arrow_back</i></a></div>
+			<div class="susbstances pull-left substances_left_blk">
+				<div class="abt_img"><img src="{{imageUrl}}{{memberId}}"></div>
+				<div class="user_info">	 
+
+					<div class="stats"><label>Username : </label> <span>{{username}}</span></div> 
+					<div class="stats"><label>Name : </label> <span>{{first_name}} {{last_name}}</span></div>
+					<div class="stats"><label>Email : </label> <span>{{email}}</span></div>							
+					<div *ngIf="gender" class="stats"><label>Gender : </label> <span>{{gender}}</span></div>
+					<div *ngIf="dob" class="stats"><label>Date Of Birth : </label> <span>{{dob}}</span></div>
+				</div>
+			</div>
+			<div class="pull-left middle_blk">
+				<div class="user_info">					
+					<div class="stats"><label>Join : </label> <span>{{join_from}}</span></div>
+					<div *ngIf="state" class="stats"><label>State : </label> <span>{{state}}</span></div>
+					<div *ngIf="member_country" class="stats"><label>Country : </label>
+						<span>
+							<ng-container *ngFor="let counte of countryLists">
+								<span *ngIf="counte.code == member_country">						
+									<img width='45px' height='25px' src="assets/images/all_flags/{{counte.image}}.gif" class="img-fluid"><span class="country_name">{{counte.name}}</span>
+								</span>
+							</ng-container>
+						</span>
+					</div>					
+					<div *ngIf="device_type" class="stats"><label>Registered Device : </label> <span>{{device_type}}</span></div>
+				</div>
+			</div>
+			<div class="pull-right profile_status">
+				<label>Status : </label><mat-slide-toggle [checked]="status_checked" (change)="updateUserstatus($event)">Slide me!</mat-slide-toggle>
+				<div class="last_log"><p>Last Login : {{lastlogin}}</p></div>
+			</div>
+			<div class="profile_desc">
+			<div *ngIf="description" class="stats"><label>Description : </label> <span>{{description}}</span></div>
+			</div>
+		</div>
+
+		<div class="section-block tables_tabs"> 
+			<div class="states_head">
+				<ul class="clearfix">
+					<li><span><i class="material-icons">perm_media</i>Posts</span></li>
+					<li><span><i class="material-icons">person_add</i>Followers</span></li>
+					<li><span><i class="material-icons">people</i>Following</span></li>
+				</ul>
+			</div>
+
+			<div class="comets">
+				<ul class="impacter clearfix">	
+					<li infiniteScroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()" [scrollWindow]="false">
+						<div *ngIf="memberPostData.length>0">
+							<ng-container *ngFor="let memberpost of memberPostData">
+								<div class="long_desc">
+									<a routerLink="/admin/post-details/{{memberpost.post_id}}">
+										<span class="likecmts">
+											<div *ngIf="memberpost.post_type == 'photo';then phototag else videotag">here is ignored</div>
+											<ng-template #phototag>
+												<img src="{{memberpost.media}}">
+											</ng-template>
+											<ng-template #videotag>
+												<img src="{{memberpost.media_image}}">
+												<span><i class="material-icons">play_circle_filled</i></span>
+											</ng-template>							
+										</span></a>
+										
+										<span class="smart_cls">
+
+											<span *ngIf = "memberpost.post_text.length > textLength;else fullJobDescription;">
+												<span class="description" [attr.id]="'undoBtn'+memberpost.post_id" *ngIf="showBtn !== memberpost.post_id">{{memberpost.post_text | truncatetext : textLength}}
+													<a (click)="showUndoBtn(memberpost.post_id,'less')">More</a>
+												</span>
+												<span *ngIf="showBtn === memberpost.post_id">{{memberpost.post_text}}
+													<a (click)="showUndoBtn(memberpost.post_id,'more')">Less</a>
+												</span>
+											</span>
+											<ng-template #fullJobDescription>
+												<span class="description">{{memberpost.post_text}}</span>
+											</ng-template>
+
+											<a routerLink="/admin/post-details/{{memberpost.post_id}}" class="description"><span class="both_bands"><span class="likes"><i class="material-icons">thumb_up</i> Like : {{memberpost.post_like_count}}</span><span class="comments"><i class="material-icons">insert_comment</i> Comment : {{memberpost.post_comment_count}}</span></span></a>
+										</span>
+									</div>
+								</ng-container>
+							</div>
+							<div *ngIf="isnodatapost">
+								<p class="no-record">No Record Found</p>
+							</div>
+							<span *ngIf="user_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+						</li>
+						<li infiniteScroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDownFollower()" [scrollWindow]="false">
+							<div *ngIf="memberFollowerData.length>0">
+								<ng-container *ngFor="let memberfollower of memberFollowerData">
+									<div class="followers_start">
+										<a routerLink="/admin/profile/{{memberfollower.user_id}}"><span class="follower_smart_img"><img src="{{imageUrl}}{{memberfollower.user_id}}"></span>
+											<span class="follower_smart_cont"><span class="user_name">{{memberfollower.name}}</span><span class="follower_date"><i class="material-icons">calendar_today</i> {{memberfollower.follower_from}}</span></span></a> 
+										</div>
+									</ng-container>
+								</div>
+								<div *ngIf="isnodatafollower">
+									<p class="no-record">No Record Found</p>
+								</div>
+								<span *ngIf="follower_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+							</li> 
+							<li infiniteScroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDownFollowing()" [scrollWindow]="false">
+								<div *ngIf="memberFollowingData.length>0">
+									<ng-container *ngFor="let memberfollowing of memberFollowingData">
+										<div class="following_start">
+											<a routerLink="/admin/profile/{{memberfollowing.user_id}}"><span class="follower_smart_img"><img src="{{imageUrl}}{{memberfollowing.user_id}}"></span>
+												<span class="follower_smart_cont"><span class="user_name">{{memberfollowing.name}}</span> <span class="follower_date"><i class="material-icons">calendar_today</i> {{memberfollowing.following_from}}</span></span></a>
+											</div>
+										</ng-container>
+									</div>
+									<div *ngIf="isnodatafollowing">
+										<p class="no-record">No Record Found</p>
+									</div>
+									<span *ngIf="following_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+								</li>  
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+<!-- PROFILE INFO PAGE END -->

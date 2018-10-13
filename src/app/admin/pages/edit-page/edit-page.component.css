@@ -1,0 +1,49 @@
+/* === Edit CMS page mat checkbox design start === */
+:host /deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background { background-color: #1284ee; }
+:host /deep/ .mat-form-field-appearance-outline .mat-form-field-infix { padding: 0.5em 0 0.5em 0; }
+:host /deep/ .mat-form-field-label-wrapper { top: -1.4em; padding-top: .5em; }
+:host /deep/ .mat-form-field-wrapper { padding-bottom:0px; }
+:host /deep/ .mat-form-field { width:100%; margin-top:10px;}
+:host /deep/ .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick { color:#1284ee; }
+:host /deep/ .mat-focused .mat-form-field-label { color:#1284ee; font-size:10px; }
+:host /deep/ .mat-checkbox-inner-container { width:16px; height:16px; }
+:host /deep/ input.mat-input-element { color:#34474f; margin-bottom: 5px; }
+:host /deep/ mat-label { font-size: 18px;}
+/* === Edit CMS page mat radio design start === */
+.mat-radio-button { color:#34474f; margin:0px 10px; }
+.mat-radio-group { color:#34474f; }
+.section-block .form-group textarea {color: #34474f; }
+:host /deep/ .mat-radio-label {
+    margin: 0px;
+}
+:host /deep/ textarea.mat-input-element {
+    height: 80px;
+    resize: none;
+}
+/* === Edit CMS page Main section === */
+div{
+    font-family:'open sans';
+}
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+    font-family:'open sans';
+    font-weight: 600;
+}
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+    font-family:'open sans';
+}
+.mat-form-field {
+    font-family:'open sans';
+    line-height: 23px;
+}
+div a{
+    text-decoration:none;
+    color:inherit;
+}
+::ng-deep button.mat-icon-button {
+    outline: none !important;
+}
+@media(max-width:767px){
+:host /deep/ .mat-radio-button{
+    margin: 0px 4px 0px 0px;
+}
+}

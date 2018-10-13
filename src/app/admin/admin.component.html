@@ -1,0 +1,122 @@
+<div class="wrapper main_sapper" id="wrapper">
+	<!-- SIDE NAV BAR START -->
+	<nav id="sidebar" class="sidebar-block">
+		<div style="position:relative;display: inline-block;width:100%;" [@slideInOut]="menuState">
+			<div class="scroll-window">
+				<ul class="list-unstyled components">
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/dashboard" routerLinkActive="active"><span><i class="material-icons">home</i></span><div class="menu_text">Dashboard</div></button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/dashboard" routerLinkActive="active" matTooltip="Dashboard" matTooltipPosition="right"><span><i class="material-icons">home</i></span></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/users" routerLinkActive="active" class="mat-button {{userCls}}"><i class="material-icons" >supervised_user_circle</i><span class="menu_text">User Management</span></button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/users" routerLinkActive="active" class="mat-button {{userCls}}" matTooltip="User Management" matTooltipPosition="right"><i class="material-icons" >supervised_user_circle</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/posts" routerLinkActive="active" class="mat-button {{postCls}}"><i class="material-icons" >perm_media</i><span class="menu_text">Posts</span></button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/posts" routerLinkActive="active" class="mat-button {{postCls}}" matTooltip="Posts" matTooltipPosition="right"><i class="material-icons" >perm_media</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/pages" routerLinkActive="active" class="mat-button {{pagesCls}}"><i class="material-icons" >file_copy</i><span class="menu_text">Pages</span> </button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/pages" routerLinkActive="active" class="mat-button {{pagesCls}}" matTooltip="Pages" matTooltipPosition="right"><i class="material-icons" >file_copy</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/post-repots" routerLinkActive="active" ><i class="material-icons" >report</i><span class="menu_text">Reports</span> </button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/post-repots" routerLinkActive="active" matTooltip="Reports" matTooltipPosition="right"><i class="material-icons" >report</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/site-setting" routerLinkActive="active"><i class="material-icons" >settings</i><span class="menu_text">Site Settings</span> </button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/site-setting" routerLinkActive="active" matTooltip="Site Settings" matTooltipPosition="right"><i class="material-icons" >settings</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button routerLink="/admin/mail-setting" routerLinkActive="active"><i class="material-icons" >email</i><span class="menu_text">Mail Settings</span> </button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button routerLink="/admin/mail-setting" routerLinkActive="active" matTooltip="Mail Settings" matTooltipPosition="right"><i class="material-icons" >email</i></button>
+						</div>
+					</li>
+					<li>
+						<div *ngIf="tooltip_action==false">
+							<button mat-button (click)="logout()"><i class="material-icons" >exit_to_app</i><span class="menu_text">Logout</span></button>
+						</div>	
+						<div *ngIf="tooltip_action">
+							<button mat-button (click)="logout()" matTooltip="Logout" matTooltipPosition="right"><i class="material-icons" >exit_to_app</i></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- SIDE NAV BAR END -->
+	<!-- Page Content  -->
+	<div id="content">
+		<!-- HEADER CONTENT START -->
+		<section class="header-block">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="col-lg-12 col-md-12 col-sm-12 full_bar">
+						<div class="row">
+							<!-- LOGO BLOCK START -->
+							<div class="col-lg-3 col-md-5 col-sm-12">
+								<div class="nav-btn-block">
+									<h1 id='app_name'><a>Instasocial</a></h1>
+									<button id="sidebarCollapse" mat-button class="nav-btn" (click)="toggleMenu()">
+										<span><i class="fa fa-bars"></i></span>
+									</button>
+								</div>
+							</div>
+							<!-- LOGO BLOCK END -->
+							<!-- USER SETTINGS BLOCK START -->
+							<div class="col-lg-9 col-md-7 col-sm-12 header_menu_right">
+								<div class="header_menu_details">
+									<ul class="header_list" mat-icon-button routerLink="/admin/settings">
+										<li>
+											<div class="profile_picture">
+												<img [src]="logged_image">
+											</div>
+										</li>
+										<li>
+											<h1 class="profile_name"><a routerLink="/admin/settings">{{logged_admin_name}}</a></h1>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- USER SETTINGS BLOCK END -->
+						</div>
+					</div>
+				</nav>
+			</div>
+		</section>
+		<!-- HEADER CONTENT END -->
+		<div class="right-sidecontent">
+			<router-outlet></router-outlet>
+		</div>  
+		<app-footer></app-footer>  
+	</div>
+
+</div>

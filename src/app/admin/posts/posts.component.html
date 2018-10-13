@@ -1,0 +1,98 @@
+<!-- POST PAGE START -->
+<section>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="section-block first_sec">
+                    <div class="block_title">
+                        <h1>Post Listings</h1>
+                    </div>
+                </div>
+                <div class="section-block">
+                    <div class="table-responsive">
+                        <div class="filter_layout">
+                            <div class="filter_layout_input">
+                                <mat-form-field>
+                                    <input matInput class="class_filter_input" #filter (keydown.enter)="applyFilter(customFilter,1)" [(ngModel)]="customFilter" placeholder="Filter By Username">
+                                </mat-form-field>
+                            </div>
+                            <div class="filter_button_layout">
+                                <button #filterbutton mat-raised-button (click)="applyFilter(customFilter,1)">Search</button>
+                                <button #filterbutton mat-raised-button (click)="applyFilter(customFilter,0)">Reset</button>
+                            </div>
+                        </div>
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="data" class="users-table" matSort matSortDisableClear>
+                                <ng-container matColumnDef="index">
+                                    <th mat-header-cell *matHeaderCellDef>S.No</th>
+                                    <td mat-cell *matCellDef="let row; let i = index;">
+                                        <span *ngIf="pageEvent">{{pageEvent.pageIndex*perpage+ConvertToInt(i)+1}} </span>
+                                        <span *ngIf="!pageEvent && pg_number!='0'">{{ pg_number*perpage+ConvertToInt(i)+1 }}</span>
+                                        <span *ngIf="!pageEvent && pg_number==0">{{ ConvertToInt(i)+1 }}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="user_name">
+                                    <th mat-header-cell *matHeaderCellDef>Username</th>
+                                    <td mat-cell *matCellDef="let row"><a routerLink="/admin/profile/{{row.user_id}}">{{row.user_name}}</a></td>
+                                </ng-container>
+                                <ng-container matColumnDef="post_text">
+                                    <th mat-header-cell *matHeaderCellDef>Post Images</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span *ngIf="row.media_type=='photo'">	
+								<a routerLink="/admin/post-details/{{row.post_id}}"><img src="{{ row.media_name }}"/></a>
+								</span>
+                                        <span *ngIf="row.media_type=='video'" class="video_format">	
+									<a routerLink="/admin/post-details/{{row.post_id}}"><img src="{{ row.media_image }}"/>
+									<span class="video_overlay"><i class="material-icons">play_circle_filled</i></span></a>
+                                        </span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="post_like_count">
+                                    <th mat-header-cell *matHeaderCellDef>Total Likes</th>
+                                    <td mat-cell *matCellDef="let row"><span class="span_badge">{{ row.post_like_count }}</span></td>
+                                </ng-container>
+                                <ng-container matColumnDef="post_comment_count">
+                                    <th mat-header-cell *matHeaderCellDef>Total Comments</th>
+                                    <td mat-cell *matCellDef="let row"><span class="span_badge">{{ row.post_comment_count }}</span></td>
+                                </ng-container>
+                                <ng-container matColumnDef="created_at">
+                                    <th mat-header-cell *matHeaderCellDef>Posted On</th>
+                                    <td mat-cell *matCellDef="let row">{{ row.created_at }}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="post_status">
+                                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                                    <!-- <td mat-cell *matCellDef="let row">{{ row.post_status }}</td> -->
+                                    <td mat-cell *matCellDef="let row"><span *ngIf="row.post_status=='active'" class="active">
+										{{ row.post_status }}
+									</span>
+                                        <span *ngIf="row.post_status=='inactive'" class="inactive">
+										{{ row.post_status }}
+									</span></td>
+                                </ng-container>
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef><i class="fa fa-plus mat-icon"></i> Action</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span *ngIf="pageEvent">
+                        			<button mat-icon-button routerLink="/admin/post-details/{{row.post_id}}" [queryParams]="{page: pageEvent.pageIndex}" matTooltip="View" matTooltipPosition="below"><i class="material-icons">visibility</i></button>
+                        		</span>
+                                        <span *ngIf="!pageEvent">
+                        			<button mat-icon-button routerLink="/admin/post-details/{{row.post_id}}" [queryParams]="{page: pg_number}" matTooltip="View" matTooltipPosition="below"><i class="material-icons">visibility</i></button>
+                        		</span>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <span *ngIf="posts_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+                            <div class="no-results" [style.display]="resultsLength == 0 ? '' : 'none'">
+                                No Record Found.
+                            </div>
+                            <mat-paginator [length]="resultsLength" [pageSize]="perpage" (page)="pageEvent = $event"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- POST PAGE END -->

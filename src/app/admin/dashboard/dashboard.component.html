@@ -1,0 +1,226 @@
+<!-- DASHBOARD PAGE START -->
+<section>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="row">
+      <div class="col-lg-8 col-md-12 col-sm-12">
+        <!-- BEGIN TITLE -->
+        <div class="section-block first_sec">
+          <div class="block_title">
+            <h1>Dashboard</h1>
+          </div>
+        </div>
+        <!-- END TITLE -->        
+        <!-- Recent registered user block Start -->
+        <div class="section-block dashboard_section_block">
+            <div class="block_details">
+              <h3>Recent registered user</h3>
+            </div>
+          
+            <div class="table-responsive dashboard_table">
+            <div class="mat-elevation-z8">
+                <span *ngIf="user_listing_loader" class="table_loader"><mat-spinner [diameter]="25"></mat-spinner></span>
+                <table mat-table [dataSource]="dataSource">
+                  <ng-container matColumnDef="user_id">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let element"> <a routerLink="/admin/profile/{{element.user_id}}"><img src="{{imageUrl}}{{element.user_id}}" class="img-fluid"></a> </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="username">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element"> <a routerLink="/admin/profile/{{element.user_id}}"><h3 class="tableprofile_name">{{element.username}}</h3> </a></td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="created_at">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time_ago}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="country">
+                      <th mat-header-cell *matHeaderCellDef> </th>
+                      <td mat-cell *matCellDef="let element">
+                        <ng-container *ngFor="let counte of countries">
+                            <span *ngIf="counte.code == element.country" class="flags_blk">						
+                                <img src="assets/images/all_flags/{{counte.image}}.gif"  class="img-fluid">
+                            </span>
+                        </ng-container>
+                      </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Recent registered user block End -->
+
+      </div>
+      <!-- Today Activity block Start -->
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="section-block-count">
+          <div class="user-status">
+            <h3>Today Activity</h3>
+          </div>
+
+            <div class="count_list">
+
+              <ul class="user_list">
+                <li><i class="fa fa-users" aria-hidden="true"></i></li>
+                <li><span>Users</span></li>
+                <li>{{todayUser}}</li>
+              </ul>
+              <ul class="post_list">
+                <li><i class="fa fa fa-send" aria-hidden="true"></i></li>
+                <li><span>Posts</span></li>
+                <li>{{todayPost}}</li>
+              </ul>
+              <ul class="command_list">
+                    <li><i class="fa fa-comments" aria-hidden="true"></i></li>
+                    <li><span>Comments</span></li>
+                    <li>{{todayCmt}}</li>
+              </ul>
+              <ul class="like_list">
+                  <li><i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+                  <li><span>Likes</span></li>
+                  <li>{{todayLike}}</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="total_count_list">
+              <div class="total_count_left">
+                  <span><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+              </div>
+
+              <div class="total_count_right">
+                  <h4>TOTAL VIDEOS</h4>
+                  <p>{{totalVideoCount}}</p>
+              </div>
+              </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="total_count_list">
+              <div class="total_count_left">
+                  <span><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+              </div>
+
+              <div class="total_count_right">
+                  <h4>TOTAL PHOTOS</h4>
+                  <p>{{totalPhotoCount}}</p>
+              </div>
+              </div>
+        </div>
+
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="total_count_list">
+              <div class="total_count_left">
+                  <span><i class="fa fa-users" aria-hidden="true"></i></span>
+              </div>
+
+              <div class="total_count_right">
+                  <h4>TOTAL USERS</h4>
+                  <p>{{totalUserCount}}</p>
+              </div>
+              </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="total_count_list">
+            <div class="total_count_left">
+                <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+            </div>
+
+            <div class="total_count_right">
+                <h4>TOTAL Posts</h4>
+                <p>{{totalPostCount}}</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="total_count_list">
+            <div class="total_count_left">
+                <span><i class="fa fa-apple" aria-hidden="true"></i></span>
+            </div>
+
+            <div class="total_count_right">
+                <h4>iPhone USERS</h4>
+                <p>{{totaliPhoneCount}}</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="total_count_list">
+            <div class="total_count_left">
+                <span><i class="fa fa-android" aria-hidden="true"></i></span>
+            </div>
+
+            <div class="total_count_right">
+                <h4>Andriod USERS</h4>
+                <p>{{totalAndriodCount}}</p>
+            </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="total_count_list  full-block">
+              <div class="total_count_left">
+                  <span class="total_status"></span>
+              </div>
+
+              <div class="total_count_right">
+                  <h4>TOTAL STATUS</h4>
+                  <p>215,645</p>
+              </div>
+              </div>
+        </div> -->
+      </div>
+
+      </div>
+      <!-- Today Activity block End -->
+      <!-- User Activity block Start -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="section-block">
+              <div class="user-status">
+                <h3>User Activity</h3>
+                <button mat-button [matMenuTriggerFor]="menu" class="user-status_menu"><span><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span></button>
+                <mat-menu #menu="matMenu">
+                  <button *ngFor="let type of types" mat-menu-item (click)="onChangeType(type.value)">{{type.viewValue}}</button>
+                </mat-menu>
+                <!-- <mat-form-field>
+                    <mat-select [(value)]="defaultSelectedType" (selectionChange)="onChangeType($event.value)">
+                      <mat-option *ngFor="let type of types" [value]="type.value">
+                        {{type.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                  <input *ngIf='displayRange' type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" class="custon_inputdate" />
+              </div>
+              <div *ngIf="norecordfound;else other_content" class="no_record">
+                <h2>No record found</h2>
+              </div>
+            
+              <ng-template #other_content>
+                <canvas
+                    baseChart
+                    [chartType]="'line'"
+                    [datasets]="chartData"
+                    [labels]="chartLabels"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartClick)="onChartClick($event)">
+                </canvas>
+              </ng-template>
+            </div>
+      </div>
+      <!-- User Activity block End -->
+    </div>
+  </div>
+</section>
+<!-- DASHBOARD PAGE END -->
